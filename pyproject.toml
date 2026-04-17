@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rfi-watcher"
+version = "0.1.0"
+description = "Watch Google Drive for RFI PDFs and extract structured data"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "anthropic>=0.34.0",
+  "google-api-python-client>=2.149.0",
+  "google-auth>=2.35.0",
+  "google-auth-oauthlib>=1.2.1",
+  "google-auth-httplib2>=0.2.0",
+  "pypdf>=5.0.1",
+  "python-dotenv>=1.0.1",
+]
+
+[project.scripts]
+rfi-watch = "rfi_watcher.watch:main"
+rfi-extract = "rfi_watcher.extract:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
